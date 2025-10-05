@@ -1,16 +1,24 @@
-import React from 'react'
+import React from 'react';
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// import { BrowserRouter } from 'react-router'
-import { BrowserRouter } from "react-router-dom";
-
+import { HeroUIProvider } from "@heroui/react";
 import './index.css'
 import App from './App.jsx'
+import AuthContextProvider, { AuthContext } from './Context/AuthContext.jsx';
+import { Toaster } from 'react-hot-toast';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <HeroUIProvider>
+      <AuthContextProvider>
+        <Toaster/>
+        <App />
+      </AuthContextProvider>
+
+
+
+    </HeroUIProvider>
+
+
   </StrictMode>,
 )
